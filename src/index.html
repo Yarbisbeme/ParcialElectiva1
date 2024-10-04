@@ -47,6 +47,14 @@
             transition: background-color 0.3s ease;
         }
 
+        .reset {
+            background: rgb(255, 61, 27);
+        }
+        .reset:hover{
+            transition: .5s;
+            background-color: rgb(238, 38, 3);
+        }
+
         button:hover {
             background-color: #45a049;
         }
@@ -59,7 +67,7 @@
         <div id="counter">0</div>
         <button onclick="increaseCount()">Incrementar</button>
         <button onclick="decreaseCount()">Decrementar</button>
-        <button onclick="resetCount()">Resetear</button>
+        <button class="reset" onclick="resetCount()">Resetear</button>
     </div>
 
     <script src="counter.js">
