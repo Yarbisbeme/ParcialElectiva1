@@ -3,26 +3,27 @@ name: Deploy to Surge
 on:
   push:
     branches:
-      - main
+      - main  # Cambia 'main' al nombre de tu rama si es necesario
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Check out code
         uses: actions/checkout@v2
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14' # o la versión que necesites
-
+          node-version: '16'  
       - name: Install dependencies
         run: npm install
 
+      - name: Install Surge
+        run: npm install -g surge  
+
       - name: Deploy to Surge
-        run: npm run deploy
+        run: surge ./src ParcialElectivaUno.surge.sh
         env:
-          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}  
