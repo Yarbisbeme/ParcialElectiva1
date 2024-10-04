@@ -3,28 +3,26 @@ name: Deploy to Surge
 on:
   push:
     branches:
-      - main  # o la rama que prefieras para el despliegue
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16'
-    - name: Install dependencies
-      run: npm install 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # o la versión que necesites
 
-    - name: Build project
-      run: npm run build 
-      working-directory: ./src
+      - name: Install dependencies
+        run: npm install
 
-    - name: Deploy to Surge
-      run: surge ./src --domain ${{ secrets.SURGE_DOMAIN }}
-      env:
-        SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+      - name: Deploy to Surge
+        run: npm run deploy
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}

@@ -48,11 +48,18 @@
         }
 
         .reset {
-            background: rgb(255, 61, 27);
+            background: rgb(255, 44, 7);
         }
         .reset:hover{
             transition: .5s;
-            background-color: rgb(238, 38, 3);
+            background-color: rgb(233, 37, 2);
+        }
+
+        .decrease{
+            background: rgb(255, 174, 0);
+        } .decrease:hover{
+            transition: .5s linear;
+            background: rgb(255, 153, 0);
         }
 
         button:hover {
@@ -66,7 +73,7 @@
         <h1>Contador Interactivo</h1>
         <div id="counter">0</div>
         <button onclick="increaseCount()">Incrementar</button>
-        <button onclick="decreaseCount()">Decrementar</button>
+        <button class="decrease" onclick="decreaseCount()">Decrementar</button>
         <button class="reset" onclick="resetCount()">Resetear</button>
     </div>
 
